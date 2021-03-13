@@ -1,37 +1,54 @@
-# OSDtwodotwhoa
-# Goals and Summary
+# Refactoring OSD: draft of OSD 1.9
+
+This is mirrored to GitHub for versioning purposes, but (to the extent I'm interested in collaboration on this) I'd prefer to try it on HackMD. You can do that here (or if you're already reading this on HackMD, welcome!) 
+[![hackmd-github-sync-badge](https://hackmd.io/NYCFwO_ZTcKCwjrjWltI2w/badge)](https://hackmd.io/NYCFwO_ZTcKCwjrjWltI2w)
+
+[TOC]
+
+# Goals and summary
 
 This is a refactoring of the Open Source Definition, inspired by work I did some time ago to refactor the Open Knowledge Definition between its version 1 and 2.0, and egged on by real-life discussions at FOSDEM and CopyleftConf in 2020 and on Twitter in 2021.
 
-My primary motivation here is to show what *can* be done to make the OSD more comprehensible and useful. I do not have the time or motivation to shepherd a rewrite through OSI, but since I've done the work I figured I'd share it in hopes it can be useful to someone.
+My primary motivation here is to show what *can* be done to make the OSD more comprehensible and useful. I do not have the time or motivation to shepherd a rewrite through OSI, but since I've done the work I'm sharing in hopes it can be useful to someone.
+
+## Primary changes
 
 The primary structural changes are two-fold:
 * The definition of open source *software* is split from open source *licenses*, resolving a confusion OSI historically inherited from Debian (which as a distributor of software itself, had to answer both questions simultaneously).
 * Breaks the definition of an open license into required permissions, forbidden restrictions, and permitted restrictions, each of which are separate concepts but which are intertwingled in the original OSD and DFSG.
 
-## Unavoidable(?) Questions
+## Value of this effort; relationship to "commercial" and ethical movements 
+I've labeled this 1.9 because the goal is to refactor, not rewrite. In other words, I've earnestly tried to keep it as close as possible to the meaning of 1.0, as interpreted in practice over the 1.5 decades since it was last revised.
+
+There are many proposals to change (in ways small and large) the OSD. This refactoring proposal is not an endorsement of any of those; it's entirely possible that the right move for OSI as an organization is simply to refactor (to improve the reliability and transparency of the existing license review process) and leave it at that. At the same time, if the organization (or other related organizations) think there should be change, I hope a refactoring will be a more solid basis for such work, allowing them to be more clear and impactful. 
+
+## Unavoidable(?) questions
 Refactoring code often exposes questions about the intended behavior of the original code. This refactoring is no different. Two particular questions jump out, but I'm sure others may be lurking:
 
-* **Allowed Restrictions**: The OSD has always explicitly permitted some restrictions, but has remained silent on many others that are present in many licenses. Sections 2.3.1 and 2.3.2 extract OSD's existing language on this topic, while Sections 2.3.3-2.3.6 (and the last clause of 2.3.1) attempt to capture existing permitted restrictions, such as copyleft. This is almost certainly not a comprehensive list, but I've attempted to capture most of the common restrictions. 
-
+* **Allowed Restrictions**: The OSD has always explicitly permitted some restrictions, but has remained silent on many others that are nevertheless present in many licenses. Sections 2.3.1 and 2.3.2 extract OSD's existing language on this topic, while Sections 2.3.3-2.3.6 (and the last clause of 2.3.1) attempt to capture existing permitted restrictions, such as copyleft. This is almost certainly not a comprehensive list, but I've attempted to capture most of the common restrictions. It is my opinion that capturing such an explicit list will be helpful when evaluating future innovative licenses.
 * **Explicit Grant of Use**: Licenses must of course allow use, but this is not actually explicit in the current OSD. (It is implied most strongly by OSD #6.) It seemed to me worth saying, so this is now 2.1.1.
 
-## Questions That Are Out Of Scope
-This draft does not touch on the extremely important question of how the document should be interpreted. Where should the benefit of the doubt lie? What presumptions should be made about different types of license stewards? How should OSI think about innovation? How should OSI react to groups creating source-available, but likely not OSD-compliant, licensing schemes?
+## Questions that are out of scope
+In keeping with the notion that this is a refactoring and not a rewrite (or even a substantial fix of known issues!) here are a variety of issues that are known to me, but explicitly not addressed in this draft.
+* How, if at all, should previous OSI rule-writing(?) efforts like [the non-proliferation report](https://opensource.org/proliferation-report) be integrated?
+* Where should the benefit of the doubt lie when interpreting a new license submitted to OSI?
+* What presumptions should be made about different types of license stewards?
+* How should OSI think about innovation? 
+* How should OSI react to groups creating source-available, but likely not OSD-compliant, licensing schemes?
 
-All of these things are out of the scope of this draft refactoring. 
+I share some of my thoughts on these and related topics [here](https://blog.tidelift.com/what-i-learned-from-the-server-side-public-license).
 
-## Stylistic Notes
+## Stylistic notes
 
 A few notes on stylistic choices:
 
-* **Examples**: I have chosen to drop most examples. They should move to an FAQ, where they can be updated regularly with examples from license submissions, rather than being static and limited in a document that should be rarely updated. This does *not* imply dislike of any particular examples; in particular, this is not an attempt to sneak in "commercial open" by removing the example of for-profit businesses from OSD #6!
+* **Examples**: I have chosen to drop most examples. In my opinion, they should move to an FAQ, where they can be updated regularly with examples from license submissions, rather than being static and limited in a document that should be rarely updated. This does *not* imply dislike of any particular examples; in particular, this is not an attempt to sneak in "commercial open" by removing the example of for-profit businesses from OSD #6!
 * **Refactor or rewrite?**: When I originally wrote this in 2020, I tried to keep it to a minimalist refactor, making as few changes as possible to the actual text. My increasing frustration with bad drafting in 2021 sparked some more major stylistic changes (though again still with the intent of keeping the substance the same). Most notably, this includes a complete rewrite of Sec. 2.1.3 from an earlier cut/paste pastiche of OSD 1, 3, and 4; and an aggressive simplification of 2.1.2. This may make comparison harder, and invite more conspiracy theorizing about how I'm trying to ruin the OSD somehow.
-* **Titles**: I've tried to draft section titles to make them closely parallel the wording of the section. 
-* **Parallelism**: I have, wherever possible, tried to create parallelism of language. For example, part of OSD #6 that was "must not restrict" becomes "must allow" in Section 2.1.2. However, more could be done here; for example, I'd love to find a better way to phrase 2.1.4 to make it consistent with the rest of 2.1 (including perhaps accepting that it should be part of Section 1!)
+* **Titles**: I've tried to draft section titles to make them closely match the wording of the section. 
+* **Parallelism**: I have, wherever possible, tried to create parallelism of language. For example, part of OSD #6 that was "must not restrict" becomes "must allow" in Section 2.1.2. However, more could be done here; for example, someone should find a better way to phrase 2.1.4 to make it consistent with the rest of 2.1 (including perhaps accepting that it should be part of Section 1!)
 * **Terminology**: I have tried to be consistent in terminology, such as consistent use throughout of "licensed software" rather than "work" or "program".
 
-# Revised OSD
+# OSD 1.9
 ## Summary
 
 *Software is open if anyone is free to access, use, modify, and share it — subject, at most, to measures that preserve provenance and openness.*
@@ -44,7 +61,7 @@ To be open source, **software** must satisfy the following requirements:
 
 ### 1.1 Open License
 
-The complete source code for the **software** *must* be available under an open **license** (as defined in Section 2). Any additional terms accompanying any form of the software (such as terms of use, or patents held by the licensor) *must not* contradict the terms of the license.
+The complete source code for the **software** *must* be available under an open source **license** (as defined in Section 2). Any additional terms accompanying any form of the software (such as terms of use, or patents held by the licensor) *must not* contradict the terms of the license.
 
 ### 1.2 Source Available
 
@@ -52,9 +69,9 @@ The source code for the **software** *must* be available to those who receive th
 
 The source code means the preferred form in which a programmer would modify the software. Deliberately obfuscated source code, or intermediate forms such as preprocessor output, are not allowed.
 
-## 2. Open Licenses
+## 2. Open Source License
 
-A **license** is open if its terms satisfy the following conditions:
+A **license** is an open source license if its terms satisfy the following conditions:
 
 ### 2.1 Required Permissions
 
